@@ -1,0 +1,35 @@
+public static boolean[] vowels = new boolean[256];
+static{
+    vowels['a'] = true;
+    vowels['o'] = true;
+    vowels['e'] = true;
+    vowels['i'] = true;
+    vowels['u'] = true;
+    vowels['A'] = true;
+    vowels['O'] = true;
+    vowels['E'] = true;
+    vowels['I'] = true;
+    vowels['U'] = true;
+}
+
+public String reverseVowels(String s) {
+    if(s == null || s.isEmpty()) {
+        return "";
+    }
+    int i,j;
+    i = 0;
+    j = s.length() - 1;
+    char[] str = s.toCharArray();
+    while(i < j) {
+        while(i < j && !vowels[str[i]]) i++;
+        while(i < j && !vowels[str[j]]) j--;
+        if(i < j) {
+            char temp = str[i];
+            str[i] = str[j];
+            str[j] = temp;
+            i++;
+            j--;
+        }
+    }
+    return String.valueOf(str);
+}
